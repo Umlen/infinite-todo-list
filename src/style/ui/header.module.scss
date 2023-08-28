@@ -1,0 +1,31 @@
+@use "../variables";
+
+.header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid variables.$primary-dark;
+}
+
+.logo {
+  width: 3rem;
+  height: auto;
+}
+
+.addIcon {
+  cursor: pointer;
+  stroke: #f46036;
+  width: 2.5rem;
+  height: auto;
+  margin-left: auto;
+  transition: .2s linear;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}

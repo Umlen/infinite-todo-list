@@ -1,5 +1,83 @@
+@use "variables";
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: variables.$primary-light;
+  color: variables.$primary-dark;
+  font-family: variables.$paragraph-font;
+  letter-spacing: 1.25px;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 0 1rem;
+
+  @media (min-width: 700px) {
+    padding: 0 3rem;
+  }
+  @media (min-width: 1280px) {
+    padding: 0 10rem;
+  }
+}
+
+/*Typography*/
+
+@mixin headings {
+  font-family: variables.$heading-font; 
+  letter-spacing: 2.25px;
+}
+
+.largeHeader {
+  @include headings();
+  font-size: 2.25rem;
+
+@media (min-width: 700px) {
+    font-size: 3rem;
+  }
+}
+
+.bigHeader {
+  @include headings();
+  font-size: 1.75rem;
+
+  @media (min-width: 700px) {
+    font-size: 2.2rem;
+  }
+}
+
+.midHeader {
+  @include headings();
+  font-size: 1.2rem;
+
+  @media (min-width: 700px) {
+    font-size: 1.7rem;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 1.5rem;
+
+  @media (min-width: 700px) {
+    gap: 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5rem;
+  }
 }

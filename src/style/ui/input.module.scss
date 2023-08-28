@@ -1,0 +1,55 @@
+@use "../variables";
+
+.input {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: 2em;
+  padding: 0 .5em;
+  border: 2px solid variables.$primary-dark;
+  border-radius: 5px;
+
+  &:focus {
+    border-color: variables.$decor-color;
+    outline: none;
+  }
+}
+
+.textarea {
+  resize: none;
+  width: 100%;
+  max-width: 350px;
+  height: 7em;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  &:checked + .checkboxLabel::before {
+    background-color: variables.$primary-dark;
+    background-image: url('../../assets/icons/check.svg');
+  }
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid variables.$primary-dark;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 120% 120%;
+  }
+}

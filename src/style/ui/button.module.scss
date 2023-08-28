@@ -1,0 +1,25 @@
+@use "../variables";
+
+.button {
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  color: variables.$primary-light;
+  background-color: variables.$primary-dark;
+  line-height: 2em;
+  padding: 0 1em;
+  border: 2px solid variables.$primary-dark;
+  border-radius: 5px;
+
+  &:hover {
+    color: variables.$primary-dark;
+    background-color: variables.$primary-light;
+  }
+
+  &:active {
+    border-color: variables.$decor-color;
+    box-shadow: inset 1px 1px 5px rgba(variables.$primary-dark, .25);
+  }
+}
