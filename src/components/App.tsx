@@ -1,11 +1,15 @@
 import { FunctionComponent, useState } from 'react';
 
+import todos from '../store/todos';
+
+import Button from './ui/Button';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
-import Button from './ui/Button';
 import ModalWindow from './ui/ModalWindow';
+import TodoList from './TodoList';
+import TodoDetails from './TodoDetails';
 
-const App: FunctionComponent = () => {
+const App:FunctionComponent = () => {
   const [isModalShown, setIsModalShown] = useState(false);
 
   function modalWindowToggler() {
@@ -21,9 +25,12 @@ const App: FunctionComponent = () => {
             <ModalWindow modalToggler={modalWindowToggler}>
               <Button 
                 btnText='add todo' 
+                onClick={() => todos.addTask()}
               />
             </ModalWindow>
         }
+        <TodoList />
+        <TodoDetails />
       </main>
       <Footer />
     </>
