@@ -26,7 +26,7 @@ export const subTaskAdding:SubTaskAddingProps = (id, array, task) => {
     if (item.id === id) {
         item.subTasks.push(task);
         arr.push(item);
-    } else if (item.id !== id) {
+    } else {
         arr.push({...item, subTasks: subTaskAdding(id, item.subTasks, task)});
     }
 
@@ -49,7 +49,9 @@ export const recursionSearch:SearchProps = (id, array) => {
     if (item.id === id) {
       return item;
     }
+
     const subItem = recursionSearch(id, item.subTasks);
+    
     if (subItem) {
       return subItem;
     }
@@ -62,7 +64,7 @@ export const recursionMapping:RecursionProps = (id, array) => {
   return array.reduce((arr: TodoType[], item) => {
     if (item.id !== id) {
         arr.push({...item, subTasks: recursionMapping(id, item.subTasks)});
-    } else if (item.id === id) {
+    } else {
         arr.push({
           ...item, 
           isCompleted: !item.isCompleted, 

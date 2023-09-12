@@ -2,9 +2,7 @@ import { FunctionComponent, ComponentPropsWithoutRef } from 'react';
 
 import styles from '../../style/ui/input.module.scss';
 
-interface InputProps extends ComponentPropsWithoutRef<'input'> {};
-
-const Input: FunctionComponent<InputProps> = ( {...props} ) => {
+const Input: FunctionComponent< ComponentPropsWithoutRef<'input'> > = ( {...props} ) => {
   return (
     <input 
       {...props} 
