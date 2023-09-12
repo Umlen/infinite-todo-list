@@ -60,15 +60,15 @@ export const recursionSearch:SearchProps = (id, array) => {
   return null;
 };
 
-export const recursionMapping:RecursionProps = (id, array) => {
+export const recursionCompleteToggler:RecursionProps = (id, array) => {
   return array.reduce((arr: TodoType[], item) => {
     if (item.id !== id) {
-        arr.push({...item, subTasks: recursionMapping(id, item.subTasks)});
+        arr.push({...item, subTasks: recursionCompleteToggler(id, item.subTasks)});
     } else {
         arr.push({
           ...item, 
           isCompleted: !item.isCompleted, 
-          subTasks: recursionCompleteToggler(item.subTasks, !item.isCompleted)
+          subTasks: subTasksCompleteToggler(item.subTasks, !item.isCompleted)
         });
     }
 
@@ -76,12 +76,12 @@ export const recursionMapping:RecursionProps = (id, array) => {
   }, []);
 };
 
-export const recursionCompleteToggler:CompleteTogglerProps = (array, state) => {
+export const subTasksCompleteToggler:CompleteTogglerProps = (array, state) => {
   return array.reduce((arr: TodoType[], item) => {
     arr.push({
       ...item, 
       isCompleted: state, 
-      subTasks: recursionCompleteToggler(item.subTasks, state)
+      subTasks: subTasksCompleteToggler(item.subTasks, state)
     });
 
     return arr;

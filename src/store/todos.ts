@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TodoType } from '../types/types';
-import { recursionFilter, recursionMapping, recursionSearch, subTaskAdding } from '../utils/utils';
+import { recursionFilter, recursionCompleteToggler, recursionSearch, subTaskAdding } from '../utils/utils';
 
 class Todos {
   todoArray:TodoType[] = localStorage.todos ? JSON.parse(localStorage.todos) : [];
@@ -66,7 +66,7 @@ class Todos {
   }
 
   completeToggler = (id: string) => {
-    this.todoArray = recursionMapping(id, this.todoArray);
+    this.todoArray = recursionCompleteToggler(id, this.todoArray);
     localStorage.setItem('todos', JSON.stringify(this.todoArray));
   }
 
